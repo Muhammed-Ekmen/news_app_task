@@ -22,41 +22,57 @@ class ListTileNewsCard extends StatelessWidget with Supervizor {
       );
 
   BoxDecoration get _boxDecoration => BoxDecoration(
-        color: IColors.athenaGrey.apply,
-        border: Border(bottom: BorderSide(color: IColors.corduroy.apply, width: 2)),
+        borderRadius: BorderRadius.circular(13),
+        color: IColors.corduroy.apply,
+        boxShadow: [BoxShadow(color: IColors.fiord.apply.withOpacity(0.75), offset: const Offset(0, 5), blurRadius: 1)],
       );
 
   Row get _child => Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(flex: 7, child: _newsTitleAndContent),
-          Expanded(flex: 3, child: _newsImage),
+          Expanded(flex: 21, child: _newsTitleAndContent),
+          const Spacer(flex: 1),
+          Expanded(flex: 9, child: _newsImage),
         ],
       );
 
   Column get _newsTitleAndContent => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Text(
-            modelOfArticle?.title ?? IConstTexts.shared.none,
-            style: ITextStyles.tall.apply.copyWith(color: IColors.corduroy.apply, fontWeight: FontWeight.bold),
-            maxLines: 2,
-          ),
-          Text(
-            modelOfArticle?.author ?? IConstTexts.shared.none,
-            style: ITextStyles.short.apply.copyWith(color: IColors.corduroy.apply),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ],
+        children: [_titleText, _authorText],
+      );
+
+  Text get _titleText => Text(
+        modelOfArticle?.title ?? IConstTexts.shared.none,
+        style: ITextStyles.short.apply.copyWith(fontWeight: FontWeight.bold),
+        maxLines: 2,
+      );
+
+  Text get _authorText => Text(
+        modelOfArticle?.author ?? IConstTexts.shared.none,
+        style: ITextStyles.demi.apply,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
       );
 
   SizedBox get _newsImage => SizedBox(
         child: nillable(
           willCheck: modelOfArticle?.urlToImage,
-          notNil: Image.network("${modelOfArticle?.urlToImage}", fit: BoxFit.cover),
-          nill: Center(child: Icon(Icons.no_photography_outlined, size: Get.width / 10)),
+          notNil: _newsImageNotNil,
+          nill: Center(child: Icon(Icons.no_photography_outlined, size: Get.width / 10, color: IColors.athenaGrey.apply)),
         ),
+      );
+
+  Container get _newsImageNotNil => Container(
+        width: Get.width,
+        height: Get.height,
+        padding: EdgeInsets.all(Get.width / 80),
+        decoration: _newsImageBoxDecoration,
+      );
+
+  BoxDecoration get _newsImageBoxDecoration => BoxDecoration(
+        borderRadius: BorderRadius.circular(13),
+        boxShadow: [BoxShadow(color: IColors.fiord.apply.withOpacity(0.75), offset: const Offset(0, 5), blurRadius: 1)],
+        image: DecorationImage(image: NetworkImage("${modelOfArticle?.urlToImage}"), fit: BoxFit.cover),
       );
 }

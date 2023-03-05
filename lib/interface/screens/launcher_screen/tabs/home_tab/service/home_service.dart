@@ -14,7 +14,7 @@ class ServiceOfHome with DioClient {
 
   Future<ModelOfNews> getNews({required ApiCountryQuerry country}) async {
     try {
-      var response = await getRequest(url: "${DioUrls.instance.base_url}${country.name}&apiKey=${AppKeys.shared.apiKEY}");
+      var response = await getRequest(url: "${DioUrls.instance.baseUrl}${country.name}&apiKey=${AppKeys.shared.apiKEY}");
       if (response?.data != null) {
         ModelOfNews trial = ModelOfNews.fromJson(response!.data);
         return trial;

@@ -11,11 +11,7 @@ class SearchKeyWordTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SizedBox(
         width: Get.width,
-        child: TextFormField(
-          controller: controller,
-          decoration: _inputDecoration,
-          onChanged: onChanged,
-        ),
+        child: TextFormField(controller: controller, decoration: _inputDecoration, onChanged: onChanged),
       );
 
   InputDecoration get _inputDecoration => InputDecoration(

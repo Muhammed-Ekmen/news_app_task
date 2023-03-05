@@ -26,89 +26,18 @@ class HomeView extends StatelessWidget with SnailShell {
           margin: EdgeInsets.only(top: Get.height / 40),
           width: Get.width,
           height: Get.height,
-          child: ListView.builder(
-            itemCount: _homeViewModel.newsModel.length,
-            itemBuilder: (context, index) => ListTileNewsCard(
-              onTap: () => _homeViewModel.listTileNewsCardOnTap(_homeViewModel.newsModel[index]),
-              modelOfArticle: _homeViewModel.newsModel[index],
-            ),
-          ),
+          child: _listView,
         ),
       );
+
+  ListView get _listView => ListView.separated(
+        separatorBuilder: (context, index) => SizedBox(height: Get.height / 70),
+        itemCount: _homeViewModel.dummyNewsModel.length,
+        itemBuilder: _itemBuilder,
+      );
+
+  Widget? _itemBuilder(BuildContext context, int index) => ListTileNewsCard(
+        onTap: () => _homeViewModel.listTileNewsCardOnTap(_homeViewModel.dummyNewsModel[index]),
+        modelOfArticle: _homeViewModel.dummyNewsModel[index],
+      );
 }
-
-/////////////////////////
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   TextEditingController editingController = TextEditingController();
-
-//   final duplicateItems = List<String>.generate(10000, (i) => "Eleman $i");
-//   var items = [];
-
-//   @override
-//   void initState() {
-//     items.addAll(duplicateItems);
-//     super.initState();
-//   }
-
-//   void filterSearchResults(String query) {
-//     List<String> dummySearchList = [];
-//     dummySearchList.addAll(duplicateItems);
-//     if (query.isNotEmpty) {
-//       List<String> dummyListData = [];
-//       for (var item in dummySearchList) {
-//         if (item.contains(query)) {
-//           dummyListData.add(item);
-//         }
-//       }
-//       setState(() {
-//         items.clear();
-//         items.addAll(dummyListData);
-//       });
-//       return;
-//     } else {
-//       setState(() {
-//         items.clear();
-//         items.addAll(duplicateItems);
-//       });
-//     }
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Colors.deepOrange,
-//         title: Text(widget.title),
-//       ),
-//       body: Container(
-//         child: Column(
-//           children: <Widget>[
-//             Padding(
-//               padding: const EdgeInsets.all(10.0),
-//               child: TextField(
-//                 onChanged: (value) {
-//                   filterSearchResults(value);
-//                 },
-//                 controller: editingController,
-//                 decoration: const InputDecoration(labelText: "Sınav ara", hintText: "Sınavı olduğun tarihi yaz", prefixIcon: Icon(Icons.search), border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10.0)))),
-//               ),
-//             ),
-//             const SizedBox(height: 10),
-//             Expanded(
-//               child: ListView.builder(
-//                 shrinkWrap: true,
-//                 itemCount: items.length,
-//                 itemBuilder: (context, index) {
-//                   return ListTile(
-//                     title: Text('Listedeki ${items[index]}'),
-//                   );
-//                 },
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

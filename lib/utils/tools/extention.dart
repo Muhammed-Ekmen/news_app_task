@@ -32,11 +32,11 @@ extension IColorsExt on IColors {
   Color get apply {
     switch (this) {
       case IColors.athenaGrey:
-        return Colors.white;
+        return const Color(0xFFe9edf0);
       case IColors.corduroy:
-        return Colors.black;
-      case IColors.lavender:
-        return Colors.pink;
+        return const Color(0xFF567189);
+      case IColors.fiord:
+        return const Color(0xFF3f5270);
       default:
         return Colors.black;
     }
@@ -60,9 +60,20 @@ extension LauncherTabsExt on LauncherTabs {
       case LauncherTabs.home:
         return Icon(Icons.home, color: IColors.athenaGrey.apply);
       case LauncherTabs.favorite:
-        return Icon(Icons.favorite, color: IColors.lavender.apply);
+        return Icon(Icons.favorite, color: IColors.athenaGrey.apply);
       default:
         return const Icon(Icons.error);
+    }
+  }
+}
+
+extension IMeasuresExt on IMeasures {
+  EdgeInsetsGeometry get adjust {
+    switch (this) {
+      case IMeasures.screenOrientation:
+        return EdgeInsets.only(top: Get.height / 50, left: Get.width / 25, right: Get.width / 25, bottom: Get.height / 75);
+      default:
+        return EdgeInsets.zero;
     }
   }
 }

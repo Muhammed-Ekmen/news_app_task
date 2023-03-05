@@ -4,8 +4,9 @@ class IConstTexts {
   static IConstTexts get shared => _constTexts;
   final String newsApplication = "News Application";
   final String newsAppTitle = "News App";
-  final String none = "None";
+  final String none = "------";
   final String favorites = "Favorites";
-  final String searchTextFieldHint = "Please enter the any key word...";
+  final String searchTextFieldHint = "Search key word to titles...";
   final String newsSource = "News Source";
+  final String noFavorite = "No Favorite";
 }

@@ -10,10 +10,12 @@ class LauncherView extends StatelessWidget {
   Widget build(BuildContext context) => Obx(
         () => Scaffold(
           body: _launcherViewModel.tabs[_launcherViewModel.currentTabIndex.value],
-          bottomNavigationBar: LauncherBottomNavigatorBar(
-            onTap: _launcherViewModel.launcherBottomNavigatorBarOnTap,
-            currentIndex: _launcherViewModel.currentTabIndex.value,
-          ),
+          bottomNavigationBar: _launcherBottomNavigatorBar,
         ),
+      );
+
+  LauncherBottomNavigatorBar get _launcherBottomNavigatorBar => LauncherBottomNavigatorBar(
+        onTap: _launcherViewModel.launcherBottomNavigatorBarOnTap,
+        currentIndex: _launcherViewModel.currentTabIndex.value,
       );
 }

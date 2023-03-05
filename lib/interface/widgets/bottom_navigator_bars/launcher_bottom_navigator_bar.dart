@@ -10,12 +10,10 @@ class LauncherBottomNavigatorBar extends StatelessWidget {
   Widget build(BuildContext context) => BottomNavigationBar(
         currentIndex: currentIndex,
         elevation: 20,
-        iconSize: Get.width / 20,
+        iconSize: Get.width / 15,
         backgroundColor: IColors.corduroy.apply,
-        selectedLabelStyle: ITextStyles.short.apply.copyWith(fontWeight: FontWeight.bold),
-        selectedItemColor: IColors.athenaGrey.apply,
-        unselectedItemColor: IColors.athenaGrey.apply,
+        selectedLabelStyle: ITextStyles.short.apply.copyWith(fontWeight: FontWeight.bold, fontSize: 0),
         onTap: onTap,
-        items: LauncherTabs.values.map((e) => BottomNavigationBarItem(icon: e.getIcon, label: e.name)).toList(),
+        items: LauncherTabs.values.map((e) => BottomNavigationBarItem(icon: e.getIcon, label: "")).toList(),
       );
 }

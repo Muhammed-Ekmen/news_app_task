@@ -40,7 +40,11 @@ class DetailView extends StatelessWidget with SnailShell, Supervizor {
           _iconButton(_detailViewModel.shareButtonOnTap, Icons.ios_share),
           _iconButton(
             _detailViewModel.favoriteButtonOnTap,
-            _detailViewModel.addedFavorite.value == false ? Icons.favorite_border : Icons.favorite,
+            binaryCondition(
+              trueCondition: _detailViewModel.addedFavorite.value,
+              inconvenient: Icons.favorite_border,
+              convenient: Icons.favorite,
+            ),
           ),
         ],
       );

@@ -15,13 +15,25 @@ class NewsLineCard extends StatelessWidget {
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [_authorPlaceHolder, _publishedDate]),
       );
 
-  BoxDecoration get _boxDecoration => BoxDecoration(color: IColors.corduroy.apply, borderRadius: BorderRadius.circular(7));
+  BoxDecoration get _boxDecoration => BoxDecoration(
+        color: IColors.corduroy.apply,
+        borderRadius: BorderRadius.circular(7),
+        boxShadow: [BoxShadow(color: IColors.fiord.apply.withOpacity(0.75), offset: const Offset(0, 5), blurRadius: 1)],
+      );
 
   Row get _authorPlaceHolder => Row(
         children: [
           Icon(Icons.newspaper, color: IColors.athenaGrey.apply),
           SizedBox(width: Get.width / 50),
-          Text(modelOfNews?.author ?? IConstTexts.shared.none, style: ITextStyles.demi.apply),
+          SizedBox(
+            width: Get.width / 4,
+            child: Text(
+              modelOfNews?.author ?? IConstTexts.shared.none,
+              style: ITextStyles.demi.apply,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
+          ),
         ],
       );
 

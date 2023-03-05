@@ -11,14 +11,13 @@ class NewsSourceView extends StatelessWidget with SnailShell {
   final NewsSourceViewModel _newsSourceViewModel = Get.put(NewsSourceViewModel());
   final NewsArticles? modelOfNews;
   @override
-  Widget build(BuildContext context) => SafeArea(
-        child: Scaffold(
-          appBar: AppBar(title: Text(IConstTexts.shared.newsSource), centerTitle: true),
-          body: SizedBox(
-            width: Get.width,
-            height: Get.height,
-            child: WebViewWidget(controller: _newsSourceViewModel.webViewCtrl),
-          ),
-        ),
+  Widget build(BuildContext context) => SafeArea(child: Scaffold(appBar: _appBar, body: _webViewBody));
+
+  AppBar get _appBar => AppBar(title: Text(IConstTexts.shared.newsSource), centerTitle: true);
+
+  SizedBox get _webViewBody => SizedBox(
+        width: Get.width,
+        height: Get.height,
+        child: WebViewWidget(controller: _newsSourceViewModel.webViewCtrl),
       );
 }

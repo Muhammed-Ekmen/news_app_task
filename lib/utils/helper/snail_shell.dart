@@ -1,25 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:news_app_task/utils/tools/enums.dart';
 
 abstract class SnailShell {
   Container shellOfScrool({required List<Widget> children}) => Container(
         width: Get.width,
-        margin: _screenOrientation,
-        child: CustomScrollView(
-          slivers: [
-            SliverFillRemaining(hasScrollBody: false, child: Column(children: children)),
-          ],
-        ),
+        margin: IMeasures.screenOrientation.adjust,
+        child: CustomScrollView(slivers: [SliverFillRemaining(hasScrollBody: false, child: Column(children: children))]),
       );
 
   Padding shellOfWithOutScroll({required List<Widget> children}) => Padding(
-        padding: _screenOrientation,
+        padding: IMeasures.screenOrientation.adjust,
         child: Column(children: children),
-      );
-
-  EdgeInsetsGeometry get _screenOrientation => EdgeInsets.only(
-        top: Get.height / 50,
-        left: Get.width / 25,
-        right: Get.width / 25,
       );
 }

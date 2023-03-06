@@ -1,9 +1,15 @@
 class FetchDataException implements Exception {
-  String showMessage = "-*Fetch Data Exception*-";
+  String showMessage = "-*Fetch Data*-";
 }
 
 class BadRequestException implements Exception {
-  String showMessage = "-*Bad Request Exception*-";
+  String showMessage = "-*Bad Request*-";
 }
 
-enum ExceptionMessages { fetchData, badRequest }
+class SocketException implements Exception {
+  String showMessage = "-*Internet Problem*-";
+}
+
+class ServerException implements Exception {
+  String showMessage = "-*Server Error*-";
+}

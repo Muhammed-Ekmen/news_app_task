@@ -27,6 +27,12 @@ class ServiceOfHome with DioClient {
     } on FetchDataException catch (e) {
       Get.dialog(ErrorAlert(error: e.showMessage));
       return ModelOfNews();
+    } on SocketException catch (e) {
+      Get.dialog(ErrorAlert(error: e.showMessage));
+      return ModelOfNews();
+    } on ServerException catch (e) {
+      Get.dialog(ErrorAlert(error: e.showMessage));
+      return ModelOfNews();
     } catch (e) {
       Get.dialog(ErrorAlert(error: e.toString()));
       return ModelOfNews();
